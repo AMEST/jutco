@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuTCo.Core", "JuTCo.Core\Ju
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuTCo.Text.Review", "JuTCo.Text.Review\JuTCo.Text.Review.csproj", "{C2940CE3-081B-4AF2-A209-2DF276FA2305}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5D05325A-9853-48CC-A629-1A9EBBE0FE67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuTCo.Text.Review.Tests", "tests\JuTCo.Text.Review.Tests\JuTCo.Text.Review.Tests.csproj", "{D3D258DA-BBF8-4B42-AEED-7B5D229E4C77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,12 @@ Global
 		{C2940CE3-081B-4AF2-A209-2DF276FA2305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2940CE3-081B-4AF2-A209-2DF276FA2305}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2940CE3-081B-4AF2-A209-2DF276FA2305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3D258DA-BBF8-4B42-AEED-7B5D229E4C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D258DA-BBF8-4B42-AEED-7B5D229E4C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D258DA-BBF8-4B42-AEED-7B5D229E4C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D258DA-BBF8-4B42-AEED-7B5D229E4C77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3D258DA-BBF8-4B42-AEED-7B5D229E4C77} = {5D05325A-9853-48CC-A629-1A9EBBE0FE67}
 	EndGlobalSection
 EndGlobal

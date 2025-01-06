@@ -19,14 +19,4 @@ public class ReviewResultModel
     ///     Статус проведения ревью
     /// </summary>
     public string Status { get; } = "ok";
-
-    /// <summary>
-    ///     Код ошибки (если status != ok)
-    /// </summary>
-    public string Code { get; private set; }
-
-    /// <summary>
-    ///     Сообщение к ошибке (если status != ok)
-    /// </summary>
-    public string Message { get; private set; }
 }

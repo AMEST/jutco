@@ -21,6 +21,11 @@ public class Hint
     public string Description { get; set; }
     
     /// <summary>
+    ///     Вес
+    /// </summary>
+    public int Weight { get; set; }
+    
+    /// <summary>
     ///     Стиль подсказки
     /// </summary>
     public HintStyle Style { get; set; }

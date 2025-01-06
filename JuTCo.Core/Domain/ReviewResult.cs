@@ -13,5 +13,7 @@ public class ReviewResult
     /// <summary>
     ///     Список проблем
     /// </summary>
-    public Fragment[] Fragments { get; set; }
+    public Fragment[] Fragments { get; set; } = Array.Empty<Fragment>();
+
+    public static ReviewResult Empty => new ReviewResult() { Score = 10 };
 }

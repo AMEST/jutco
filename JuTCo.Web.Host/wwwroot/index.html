@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Junior Text Consultant (JuTCo)</title>
+    <script>
+        function setSelectionRange(textarea, selectionStart, selectionEnd) {
+            // First scroll selection region to view
+            const fullText = textarea.value;
+            textarea.value = fullText.substring(0, selectionEnd);
+            // For some unknown reason, you must store the scollHeight to a variable
+            // before setting the textarea value. Otherwise it won't work for long strings
+            const scrollHeight = textarea.scrollHeight
+            textarea.value = fullText;
+            let scrollTop = scrollHeight;
+            const textareaHeight = textarea.clientHeight;
+            if (scrollTop > textareaHeight){
+                // scroll selection to center of textarea
+                scrollTop -= textareaHeight / 2;
+            } else{
+                scrollTop = 0;
+            }
+            textarea.scrollTop = scrollTop;
+
+            // Continue to set selection range
+            textarea.setSelectionRange(selectionStart, selectionEnd);
+        }
+        
+        async function review(){
+            const body = document.getElementById("text").value;
+            const response = await fetch("/api/Review", {
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "body": JSON.stringify({text: body}),
+                "method": "POST"
+            });
+            const responseJson = await response.json();
+
+            const score = document.getElementById("score");
+            score.innerText = `${responseJson.score.toFixed(1)} баллов`;
+            if(responseJson.score <= 7.3)
+                score.style.color = "red";
+            if(responseJson.score > 7.3)
+                score.style.color = "orange";
+            if(responseJson.score > 8.3)
+                score.style.color = "green";
+
+
+            let currentProblem = "";
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+            responseJson.fragments.sort((a,b) => a.hint.name.localeCompare(b.hint.name)).forEach(f => {
+                if(currentProblem !== f.hint.name){
+                    if(currentProblem !== "")
+                        resultsDiv.appendChild(document.createElement("hr"));
+                    const head = document.createElement("h4");
+                    head.innerText = f.hint.name;
+                    head.style.color = f.hint.tab.color;
+                    resultsDiv.appendChild(head);
+                    const shortDescription = document.createElement("span");
+                    shortDescription.innerText = f.hint.shortDescription;
+                    resultsDiv.appendChild(shortDescription);
+                    resultsDiv.appendChild(document.createElement("br"));
+                }
+                currentProblem = f.hint.name;
+                const fragment = document.createElement("span");
+                fragment.style.color = f.hint.style.color;
+                fragment.style.cursor = "pointer";
+                fragment.innerText = `${body.substring(f.start, f.end)} - (${f.start}:${f.end})`;
+                fragment.onclick = () => {
+                    const textArea = document.getElementById("text");
+                    setSelectionRange(textArea, f.start, f.end);   
+                    textArea.scrollIntoView(); 
+                };
+                resultsDiv.appendChild(fragment);
+                resultsDiv.appendChild(document.createElement("br"));
+            });
+            document.getElementById("report").scrollIntoView();
+        }
+    </script>
+</head>
+<body>
+    <textarea rows="25" cols="100" id="text" style="width: calc(100% - 8px)"></textarea>
+    <br/>
+    <button onclick="review()">Проверить</button>
+    <h2 id="report">Результаты</h2>
+    <h3 id="score"></h3>
+    <div id="results">
+        
+    </div>
+</body>
+</html>
