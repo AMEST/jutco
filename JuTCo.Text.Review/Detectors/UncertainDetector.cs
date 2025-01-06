@@ -32,6 +32,8 @@ internal class UncertainDetector : IDetector
         "почему-то",
         "всякие",
         "разные",
+        "разных",
+        "разное",
         "почти",
         "некоторые",
         "того",
@@ -56,7 +58,14 @@ internal class UncertainDetector : IDetector
         "достаточно",
         "достаточный",
         "часто",
-        "чаще"
+        "чаще",
+        "множество",
+        "многих",
+        "различными",
+        "различных",
+        "различные",
+        "различное",
+        "одной"
     ];
 
     private readonly int _minimalWordLength;

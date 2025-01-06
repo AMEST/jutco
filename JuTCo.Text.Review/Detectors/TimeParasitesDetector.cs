@@ -35,6 +35,22 @@ internal class TimeParasiteDetector : IDetector
         "в современной России", 
         "В современном мире", 
         "в современном мире", 
+        "В последние годы",
+        "В последний год",
+        "в последние годы",
+        "в последний год",
+        "В последние месяцы",
+        "в последние месяцы",
+        "В последний месяц",
+        "в последний месяц",
+        "В последние недели",
+        "в последние недели",
+        "В последнюю неделю",
+        "в последнюю неделю",
+        "В последние дни",
+        "в последние дни",
+        "В последний день",
+        "в последний день",
         "Нынче", 
         "нынче",
         "Сейчас", 
@@ -44,7 +60,7 @@ internal class TimeParasiteDetector : IDetector
     };
 
     private static readonly Regex _timeParasitesRegex =
-        new Regex(@"(?:^|\.|\!|\?)\s*(" + string.Join("|", _parasites) + ")", RegexOptions.Compiled & RegexOptions.IgnoreCase);
+        new Regex(@"(?:\n|^|\.|\!|\?)\s*(" + string.Join("|", _parasites) + ")", RegexOptions.Compiled & RegexOptions.IgnoreCase);
 
 
     public DetectResult DetectSingle(string word) => DetectResult.NotMatch;

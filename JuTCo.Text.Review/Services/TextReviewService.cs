@@ -31,7 +31,7 @@ internal partial class TextReviewService : ITextReviewService
 
         var countWords = text.CountWords();
         var score = results.Count > 0
-            ? 10.0 - (results.Count * 100.0 / countWords / 10.0)
+            ? CalculateScore(results, countWords)
             : 10.0; // 10 бальная система
 
         return Task.FromResult(new ReviewResult()
@@ -63,6 +63,14 @@ internal partial class TextReviewService : ITextReviewService
         }
 
         return results;
+    }
+
+    private static double CalculateScore(IList<DetectResult> results, int wordsCount)
+    {
+        var detectionsWeight = 0;
+        foreach (var result in results)
+            detectionsWeight += result.Weight / 100;
+        return Math.Floor(100 * Math.Pow(1.0 - detectionsWeight / (double) wordsCount, 3)) / 10.0;
     }
 
     [GeneratedRegex(@"[a-zA-Zа-яА-ЯёЁ0-9-]+", RegexOptions.Compiled)]

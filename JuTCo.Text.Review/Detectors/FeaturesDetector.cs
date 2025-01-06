@@ -9,7 +9,7 @@ namespace JuTCo.Text.Review.Detectors;
 /// </summary>
 internal class FeaturesDetector : IDetector
 {
-    private const int _weight = 100;
+    private const int _weight = 50;
     private const string _name = "Фичеризм";
     private const string _description =
         "Если описываете новые возможности продукта, описывайте их в мире клиента/пользователя";
@@ -33,6 +33,7 @@ internal class FeaturesDetector : IDetector
         "версией",
         "синхронизация",
         "возможности",
+        "возможностями",
         "функция",
         "дополнение",
         "синхронизации",
@@ -57,6 +58,7 @@ internal class FeaturesDetector : IDetector
         "интерфейса",
         "улучшению",
         "система",
+        "системами",
         "сервису",
         "платформа",
         "расширение",

@@ -30,6 +30,7 @@ internal class ModalVerbPhraseDetector : IDetector
         "нужно",
         "следует",
         "смогут",
+        "сможет",
         "можно",
         "может",
         "можете",
