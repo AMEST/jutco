@@ -68,6 +68,13 @@ internal class UncertainDetector : IDetector
         "одной"
     ];
 
+    private static readonly string[] _complexStopWords = new[]
+    {
+        "одна из главных",
+        "одно из главных",
+        "одни из главных",
+    };
+
     private readonly int _minimalWordLength;
 
     public UncertainDetector()
@@ -94,7 +101,32 @@ internal class UncertainDetector : IDetector
         return CreateResult();
     }
 
-    public DetectResult[] DetectAll(string text) => [];
+    public DetectResult[] DetectAll(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text) || text.Length < _minimalWordLength)
+            return [];
+
+        var result = new List<DetectResult>();
+        foreach (var phrase in _complexStopWords)
+        {
+            var index = text.IndexOf(phrase, StringComparison.OrdinalIgnoreCase);
+            if (index == -1)
+                continue;
+            result.Add(new DetectResult()
+            {
+                Start = index,
+                End = index + phrase.Length,
+                Name = _name,
+                Description = _description,
+                ShortDescription = _shortDescription,
+                Color = _color,
+                Tab = _tab,
+                Weight = _weight
+            });
+        }
+
+        return result.ToArray();
+    }
 
     private static DetectResult CreateResult()
     {

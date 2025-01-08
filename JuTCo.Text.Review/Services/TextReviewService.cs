@@ -67,9 +67,9 @@ internal partial class TextReviewService : ITextReviewService
 
     private static double CalculateScore(IList<DetectResult> results, int wordsCount)
     {
-        var detectionsWeight = 0;
+        var detectionsWeight = 0.0;
         foreach (var result in results)
-            detectionsWeight += result.Weight / 100;
+            detectionsWeight += result.Weight / 100.0;
         return Math.Floor(100 * Math.Pow(1.0 - detectionsWeight / (double) wordsCount, 3)) / 10.0;
     }
 

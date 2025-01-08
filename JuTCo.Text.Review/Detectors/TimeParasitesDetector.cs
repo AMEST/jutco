@@ -60,7 +60,7 @@ internal class TimeParasiteDetector : IDetector
     };
 
     private static readonly Regex _timeParasitesRegex =
-        new Regex(@"(?:\n|^|\.|\!|\?)\s*(" + string.Join("|", _parasites) + ")", RegexOptions.Compiled & RegexOptions.IgnoreCase);
+        new Regex(@"(?:\n|^|\.|\!|\?|И)\s*(" + string.Join("|", _parasites) + ")", RegexOptions.Compiled & RegexOptions.IgnoreCase);
 
 
     public DetectResult DetectSingle(string word) => DetectResult.NotMatch;
