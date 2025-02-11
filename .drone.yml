@@ -1,0 +1,29 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+    - name: build-and-push
+      image: docker
+      privileged: true
+      volumes:
+          - name: varrun
+            path: /var/run
+      environment:
+          REGISTRY_LOGIN:
+              from_secret: REGISTRY_LOGIN
+          REGISTRY_PASS:
+              from_secret: REGISTRY_PASS
+      commands:
+          - docker login -u $REGISTRY_LOGIN -p $REGISTRY_PASS
+          - docker build -t eluki/jutco:latest .
+          - docker push eluki/jutco:latest
+
+node:
+    group: swarm-openvz
+    #group: home-old-intel
+
+volumes:
+    - name: varrun
+      host:
+          path: /var/run
