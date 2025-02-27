@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\JuTCo.Text.AI\JuTCo.Text.AI.csproj" />
       <ProjectReference Include="..\JuTCo.Text.Review\JuTCo.Text.Review.csproj" />
       <ProjectReference Include="..\JuTCo.Web\JuTCo.Web.csproj" />
     </ItemGroup>

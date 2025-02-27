@@ -17,6 +17,7 @@ public class ReviewController : ControllerBase
     }
     
     [HttpPost]
+    [ValidateModel]
     [ProducesResponseType<ReviewResultModel>(200)]
     [ProducesResponseType<BadReviewResultModel>(400)]
     [ProducesResponseType<BadReviewResultModel>(500)]
