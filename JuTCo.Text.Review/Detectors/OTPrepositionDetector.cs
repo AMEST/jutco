@@ -13,7 +13,7 @@ internal class OTPrepositionDetector : IDetector
     private const string _name = "Предлог 'от'";
     private const string _description =
         "Замените на родительный падеж без предлога, если обозначает принадлежность";
-    private const string _shortDescription = "Замените на родительный падеж без предлога, если обозначает принадлежностьи";
+    private const string _shortDescription = "Замените на родительный падеж без предлога, если обозначает принадлежности";
     private const string _color = "orange";
     private const string _tab = "red";
 

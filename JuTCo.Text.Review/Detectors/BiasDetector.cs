@@ -13,7 +13,7 @@ internal class BiasDetector : IDetector
     private const int _weight = 100;
     private const string _name = "Необъективная оценка";
     private const string _description =
-        "Необоснованную оценку лучше доказывать фактами, если нет 'пруфов' то, лучше удалить из текста";
+        "Необоснованную оценку лучше доказывать фактами, если их нет то, лучше удалить из текста";
     private const string _shortDescription = "Лучше удалить или приложить факты";
     private const string _color = "red";
     private const string _tab = "red";

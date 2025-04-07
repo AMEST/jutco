@@ -10,7 +10,7 @@ namespace JuTCo.Text.Review.Detectors;
 internal class UncertainDetector : IDetector
 {
     private const int _weight = 100;
-    private const string _name = "Неопределеные";
+    private const string _name = "Неопределенные";
     private const string _description =
         "Неопределенные слова разбавляют текст не добавляя смысла. Они вызывают настороженность. Попробуйте добавить определенности";
     private const string _shortDescription = "Попробуйте добавить определенности";
