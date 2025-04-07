@@ -1,0 +1,83 @@
+.ͼ1.cm-focused {outline: unset!important;}
+
+.highlight-error {
+  background-color: rgba(255, 0, 0, 0.2);
+  text-decoration: underline wavy red;
+}
+
+.cm-theme-light {
+    border: 1px solid #e9ecef;
+    border-bottom: unset;
+}
+
+.score-block {
+  margin: 0 0 1rem 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-top: unset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.score-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.score-caption {
+  color: #6c757d;
+}
+
+.problems-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.problem-list-mw {
+    max-width: 50%!important;
+}
+
+.problem-link {
+  cursor: pointer;
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.problem-link:hover {
+  text-decoration: underline;
+}
+
+.problem-group {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+}
+
+.problem-group-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #212529;
+}
+
+.problem-group-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: #495057;
+}
+
+.problem-group-list li {
+  margin-bottom: 0.5rem;
+}

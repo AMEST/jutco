@@ -16,6 +16,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseCors(b => b
     .AllowAnyOrigin()
