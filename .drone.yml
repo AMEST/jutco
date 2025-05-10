@@ -24,7 +24,6 @@ steps:
 
 node:
   group: swarm-openvz
-  #group: home-old-intel
 
 volumes:
   - name: varrun
