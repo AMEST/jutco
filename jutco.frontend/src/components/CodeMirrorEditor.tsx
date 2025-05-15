@@ -38,7 +38,7 @@ const CodeMirrorEditor: React.FC = () => {
     EditorView.decorations.from(highlightField)
   ], []);
   const codeMirrorConfig : BasicSetupOptions = {
-    lineNumbers: false,
+    lineNumbers: true,
     highlightActiveLine: false,
     highlightSelectionMatches: false
   };
@@ -47,6 +47,13 @@ const CodeMirrorEditor: React.FC = () => {
     setCode(value);
     clearTimeout(reviewDebounceId);
     setReviewDebounceId(setTimeout(() => handleReview(value), 2000));
+  };
+
+  const getPositionInfo = (text: string, position: number) => {
+    const lines = text.substring(0, position).split('\n');
+    const line = lines.length;
+    const char = lines[lines.length - 1].length + 1;
+    return { line, char };
   };
 
   const handleReview = async (text: string) => {
@@ -97,6 +104,7 @@ const CodeMirrorEditor: React.FC = () => {
             <a 
               key={name}
               className="problem-link"
+              style={{ color: reviewResult.fragments.find(f => f.hint.name === name)?.hint.tab.color }}
               onClick={() => {
                 const element = document.getElementById(name);
                 if (element) {
@@ -120,16 +128,21 @@ const CodeMirrorEditor: React.FC = () => {
             return groups;
           }, {} as {[key: string]: typeof reviewResult.fragments})
         ).map(([hintName, fragments]) => (
-          <div key={hintName} id={hintName} className="problem-group">
-            <h3 className="problem-group-title">{hintName}</h3>
-            <ul className="problem-group-list">
-              {fragments.map((fragment, index) => (
-                <li key={index}>
-                  {code.substring(fragment.start, fragment.end)} - {fragment.hint.shortDescription}
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div key={hintName} id={hintName} className="problem-group">
+              <h3 className="problem-group-title">{hintName}</h3>
+              <div className="problem-group-description">
+                {fragments[0].hint.description}
+              </div>
+              <ul className="problem-group-list">
+                {fragments.map((fragment, index) => (
+                  <li key={index}>
+                    {code.substring(fragment.start, fragment.end)} 
+                    &nbsp;&nbsp; <span className="word-coords">(строка: {getPositionInfo(code, fragment.start).line}, 
+                    символ: {getPositionInfo(code, fragment.start).char})</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
         ))}
       </div>
     </div>

@@ -68,8 +68,13 @@
 .problem-group-title {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
   color: #212529;
+}
+
+.problem-group-description{
+    padding-bottom: 1em;
+    font-style: italic;
 }
 
 .problem-group-list {
@@ -80,4 +85,8 @@
 
 .problem-group-list li {
   margin-bottom: 0.5rem;
+}
+
+.problem-group-list li .word-coords {
+    color: rgba(0,0,0,0.3);
 }

@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "JuTCo.Web.Host",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-JuTCo.Web.Host",
+            "program": "${workspaceFolder}/JuTCo.Web.Host/bin/Debug/net8.0/JuTCo.Web.Host.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/JuTCo.Web.Host",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/JuTCo.Web.Host/Views"
+            }
+        }
+    ]
+}
